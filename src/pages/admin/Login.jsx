@@ -37,6 +37,7 @@ const Login = () => {
       if (response.ok) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("email", data.email);
+        localStorage.setItem("uid", data.uid);
 
         navigate("/admin/home");
       } else {

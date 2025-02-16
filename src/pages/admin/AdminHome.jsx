@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Pagination, Box } from "@mui/material";
+import { Pagination, Box, Button } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import NavBar from "../../components/noauth/NavBar";
 import RecipeCard from "../../components/noauth/RecipeCard";
 import AdminNavBar from "../../components/auth/AdminNavBar";
+import { useNavigate } from "react-router-dom";
 
 const AdminHome = () => {
   const [recipes, setRecipes] = useState([]);
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const [pageSize, setPageSize] = useState(1);
+  const [pageSize, setPageSize] = useState(3);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(
       `http://localhost:8080/noauth/v1/recipes?page=${page}&size=${pageSize}`
@@ -52,6 +55,24 @@ const AdminHome = () => {
           color="primary"
         />
       </Box>
+
+      <Button
+        variant="contained"
+        color="primary"
+        startIcon={<AddIcon />}
+        sx={{
+          position: "fixed",
+          bottom: 16,
+          right: 25,
+          borderRadius: "50px",
+          padding: "12px 24px",
+          backgroundColor: "orange",
+          fontWeight: "bold",
+        }}
+        onClick={() => navigate("/admin/recipe/create")}
+      >
+        Create
+      </Button>
     </>
   );
 };

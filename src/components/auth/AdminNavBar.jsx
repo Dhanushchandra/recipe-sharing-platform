@@ -22,11 +22,9 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
 
-const pages = [
-  { name: "Home", location: "/" },
-  { name: "Blog", location: "/blog" },
-];
+const pages = [{ name: "Home", location: "/admin/home" }];
 
 function AdminNavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -44,6 +42,13 @@ function AdminNavBar() {
   const handlePageClick = (route) => {
     navigate(route);
     handleCloseNavMenu();
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("token");
+    navigate("/admin/login"); // Redirect to login page
   };
 
   return (
@@ -72,13 +77,15 @@ function AdminNavBar() {
 
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
-                <Button
-                  key={page.name}
-                  onClick={() => handlePageClick(page.location)}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page.name}
-                </Button>
+                <>
+                  <Button
+                    key={page.name}
+                    onClick={() => handlePageClick(page.location)}
+                    sx={{ my: 2, color: "white", display: "block" }}
+                  >
+                    {page.name}
+                  </Button>
+                </>
               ))}
             </Box>
 
@@ -152,6 +159,13 @@ const RecipeSearch = () => {
     setSuggestions([]);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("uid");
+    navigate("/admin/login");
+  };
+
   return (
     <Box sx={{ position: "relative" }}>
       <Paper
@@ -201,6 +215,23 @@ const RecipeSearch = () => {
           </List>
         </Paper>
       )}
+
+      <Button
+        variant="contained"
+        // startIcon={}
+        sx={{
+          position: "fixed",
+          bottom: 16,
+          left: 25,
+          borderRadius: "50px",
+          padding: "12px 24px",
+          backgroundColor: "red",
+          fontWeight: "bold",
+        }}
+        onClick={handleLogout}
+      >
+        <LogoutIcon />
+      </Button>
     </Box>
   );
 };

@@ -7,7 +7,7 @@ const Home = () => {
   const [recipes, setRecipes] = useState([]);
   const [page, setPage] = useState(0); // Current page (0-based index)
   const [totalPages, setTotalPages] = useState(0); // Total number of pages
-  const [pageSize, setPageSize] = useState(1); // Number of items per page
+  const [pageSize, setPageSize] = useState(3); // Number of items per page
 
   useEffect(() => {
     fetch(

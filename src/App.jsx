@@ -6,6 +6,7 @@ import RecipeDetailPage from "./pages/RecipeDetailPage";
 import Login from "./pages/admin/Login";
 import AdminHome from "./pages/admin/AdminHome";
 import RecipeDetailPageAdmin from "./pages/admin/RecipeDetailPageAdmin";
+import RecipeCreate from "./pages/admin/RecipeCreate";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path="/admin/login" element={<Login />} />
       <Route path="/admin/home" element={<AdminHome />} />
       <Route path="/admin/recipe/:id" element={<RecipeDetailPageAdmin />} />
+      <Route path="/admin/recipe/create" element={<RecipeCreate />} />
     </Routes>
   );
 }

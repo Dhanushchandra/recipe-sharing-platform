@@ -23,10 +23,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const pages = [
-  { name: "Home", location: "/" },
-  { name: "Blog", location: "/blog" },
-];
+const pages = [{ name: "Home", location: "/" }];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
