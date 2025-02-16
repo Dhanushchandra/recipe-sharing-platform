@@ -11,14 +11,27 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useState } from "react";
-import { Divider, InputBase, Paper } from "@mui/material";
+import {
+  Divider,
+  InputBase,
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const pages = ["Home", "Categories", "Blog"];
+const pages = [
+  { name: "Home", location: "/" },
+  { name: "Blog", location: "/blog" },
+];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -28,11 +41,15 @@ function NavBar() {
     setAnchorElNav(null);
   };
 
+  const handlePageClick = (route) => {
+    navigate(route);
+    handleCloseNavMenu();
+  };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Left Side: Logo and Menu */}
           <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
             <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
             <Typography
@@ -56,16 +73,16 @@ function NavBar() {
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
                 <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
+                  key={page.name}
+                  onClick={() => handlePageClick(page.location)}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
-                  {page}
+                  {page.name}
                 </Button>
               ))}
             </Box>
 
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            {/* <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"
                 onClick={handleOpenNavMenu}
@@ -85,7 +102,7 @@ function NavBar() {
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
+            </Box> */}
           </Box>
 
           {/* Right Side: Search Bar */}
@@ -101,6 +118,7 @@ function NavBar() {
 const RecipeSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const navigate = useNavigate();
 
   const handleSearch = async (event) => {
     const query = event.target.value;
@@ -108,12 +126,14 @@ const RecipeSearch = () => {
 
     if (query.length > 0) {
       try {
-        const response = await axios.get("https://dummyjson.com/products");
-        const products = response.data.products;
+        const response = await axios.get(
+          `http://localhost:8080/noauth/v1/recipes/search?query=${query}`
+        );
+        const recipes = response.data.content;
 
-        const filteredResults = products
-          .filter((product) =>
-            product.title.toLowerCase().includes(query.toLowerCase())
+        const filteredResults = recipes
+          .filter((recipe) =>
+            recipe.name.toLowerCase().includes(query.toLowerCase())
           )
           .slice(0, 2);
 
@@ -125,6 +145,11 @@ const RecipeSearch = () => {
     } else {
       setSuggestions([]);
     }
+  };
+
+  const handleSuggestionClick = (id) => {
+    navigate(`/recipe/${id}`);
+    setSuggestions([]);
   };
 
   return (
@@ -150,6 +175,32 @@ const RecipeSearch = () => {
         </IconButton>
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
       </Paper>
+
+      {/* Display suggestions */}
+      {suggestions.length > 0 && (
+        <Paper
+          sx={{
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            right: 0,
+            zIndex: 1,
+            mt: 1,
+          }}
+        >
+          <List>
+            {suggestions.map((recipe) => (
+              <ListItem
+                key={recipe.id}
+                button
+                onClick={() => handleSuggestionClick(recipe.id)}
+              >
+                <ListItemText primary={recipe.name} />
+              </ListItem>
+            ))}
+          </List>
+        </Paper>
+      )}
     </Box>
   );
 };

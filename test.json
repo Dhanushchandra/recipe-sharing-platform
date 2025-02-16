@@ -1,0 +1,59 @@
+{
+    "content": [
+        {
+            "id": "11b634d5-ba54-4ab5-8987-66bfa9e9347d",
+            "name": "Spaghetti Bolognes",
+            "description": "A classic Italian pasta recipe.",
+            "imagePath": "src/main/resources/images/c48855cb-d46c-4ff9-b8ac-3917d4976a1e_spahetti.jpeg",
+            "base64Image": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUUExMVFhUXGBobGBgYFx0dHRoYGhoYGBcfHh0fHiggHx0lIB4XITEiJSkrLi8uHR8zODMtNyguLisBCgoKDg0OGxA",
+            "categories": [
+                "italian"
+            ],
+            "user": {
+                "id": "c0de26c0-f174-4365-9ea5-754e963a1974",
+                "username": "dhanush",
+                "email": "test@gmail.com"
+            }
+        },
+        {
+            "id": "49305f62-af81-4fb0-913d-383f30b037c7",
+            "name": "test",
+            "description": "test",
+            "imagePath": "src/main/resources/images/c4b8f366-4d5d-4fb3-9db2-af195db2e0c0_8e72b66a-b000-425b-9028-44ea4ad8d3f3.jpeg",
+            "base64Image": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAA",
+            "categories": [
+                "south indian"
+            ],
+            "user": {
+                "id": "c0de26c0-f174-4365-9ea5-754e963a1974",
+                "username": "dhanush",
+                "email": "test@gmail.com"
+            }
+        }
+    ],
+    "pageable": {
+        "pageNumber": 0,
+        "pageSize": 2,
+        "sort": {
+            "empty": true,
+            "unsorted": true,
+            "sorted": false
+        },
+        "offset": 0,
+        "unpaged": false,
+        "paged": true
+    },
+    "last": false,
+    "totalPages": 2,
+    "totalElements": 4,
+    "first": true,
+    "size": 2,
+    "number": 0,
+    "sort": {
+        "empty": true,
+        "unsorted": true,
+        "sorted": false
+    },
+    "numberOfElements": 2,
+    "empty": false
+}
