@@ -6,6 +6,7 @@ import RecipeCard from "../../components/noauth/RecipeCard";
 import AdminNavBar from "../../components/auth/AdminNavBar";
 import { useNavigate } from "react-router-dom";
 import AdminRecipeCard from "../../components/auth/AdminRecipeCard";
+import { BACKEND_API_ALL } from "../../utils/endpoints";
 
 const AdminHome = () => {
   const [recipes, setRecipes] = useState([]);
@@ -14,9 +15,7 @@ const AdminHome = () => {
   const [pageSize, setPageSize] = useState(3);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(
-      `http://localhost:8080/noauth/v1/recipes?page=${page}&size=${pageSize}`
-    )
+    fetch(`${BACKEND_API_ALL}/recipes?page=${page}&size=${pageSize}`)
       .then((response) => response.json())
       .then((data) => {
         setRecipes(data.content);

@@ -16,6 +16,7 @@ import {
   FormControl,
 } from "@mui/material";
 import AdminNavBar from "../../components/auth/AdminNavBar";
+import { BACKEND_API_ADMIN } from "../../utils/endpoints";
 
 const RecipeCreate = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const RecipeCreate = () => {
   // Fetch all categories
   useEffect(() => {
     axios
-      .get("http://localhost:8080/v1/category", {
+      .get(`${BACKEND_API_ADMIN}/category`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -63,7 +64,7 @@ const RecipeCreate = () => {
     }
 
     axios
-      .post("http://localhost:8080/v1/recipe", formData, {
+      .post(`${BACKEND_API_ADMIN}/recipe`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "multipart/form-data",

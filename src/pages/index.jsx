@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import RecipeCard from "../components/noauth/RecipeCard";
 import NavBar from "../components/noauth/NavBar";
 import { Pagination, Box } from "@mui/material";
+import { BACKEND_API_ALL } from "../utils/endpoints";
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -10,9 +11,7 @@ const Home = () => {
   const [pageSize, setPageSize] = useState(3); // Number of items per page
 
   useEffect(() => {
-    fetch(
-      `http://localhost:8080/noauth/v1/recipes?page=${page}&size=${pageSize}`
-    )
+    fetch(`${BACKEND_API_ALL}/recipes?page=${page}&size=${pageSize}`)
       .then((response) => response.json())
       .then((data) => {
         setRecipes(data.content);

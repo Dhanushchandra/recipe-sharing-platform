@@ -18,6 +18,7 @@ import {
   FormControl,
 } from "@mui/material";
 import AdminNavBar from "../../components/auth/AdminNavBar";
+import { BACKEND_API_ADMIN } from "../../utils/endpoints";
 
 const RecipeDetailPageAdmin = () => {
   const { id } = useParams();
@@ -31,7 +32,7 @@ const RecipeDetailPageAdmin = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/v1/recipe/${id}`, {
+      .get(`${BACKEND_API_ADMIN}/recipe/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -67,7 +68,7 @@ const RecipeDetailPageAdmin = () => {
     }
 
     axios
-      .put(`http://localhost:8080/v1/recipe/${id}`, formData, {
+      .put(`${BACKEND_API_ADMIN}/recipe/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "multipart/form-data",
@@ -82,7 +83,7 @@ const RecipeDetailPageAdmin = () => {
 
   const handleDeleteRecipe = () => {
     axios
-      .delete(`http://localhost:8080/v1/recipe/${id}`, {
+      .delete(`${BACKEND_API_ADMIN}/recipe/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

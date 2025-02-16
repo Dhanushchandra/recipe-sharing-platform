@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import NavBar from "../components/noauth/NavBar";
+import { BACKEND_API_ALL } from "../utils/endpoints";
 
 const RecipeDetailPage = () => {
   const { id } = useParams();
@@ -20,7 +21,7 @@ const RecipeDetailPage = () => {
   useEffect(() => {
     // Fetch the recipe details based on the ID
     axios
-      .get(`http://localhost:8080/noauth/v1/recipes/${id}`)
+      .get(`${BACKEND_API_ALL}/recipes/${id}`)
       .then((response) => {
         const recipe = response.data;
         setRecipe(recipe);

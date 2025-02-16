@@ -22,6 +22,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_API_ALL } from "../../utils/endpoints";
 
 const pages = [{ name: "Home", location: "/" }];
 
@@ -124,7 +125,7 @@ const RecipeSearch = () => {
     if (query.length > 0) {
       try {
         const response = await axios.get(
-          `http://localhost:8080/noauth/v1/recipes/search?query=${query}`
+          `${BACKEND_API_ALL}/recipes/search?query=${query}`
         );
         const recipes = response.data.content;
 

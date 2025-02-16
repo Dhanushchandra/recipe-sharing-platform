@@ -9,6 +9,7 @@ import {
   Paper,
   CircularProgress,
 } from "@mui/material";
+import { BACKEND_API_AUTH } from "../../utils/endpoints";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:8080/auth/login", {
+      const response = await fetch(`${BACKEND_API_AUTH}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
