@@ -52,11 +52,10 @@ const RecipeCreate = () => {
 
   // Handle form submission
   const handleCreateRecipe = () => {
-    console.log(localStorage.getItem("uid"));
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
-    formData.append("userId", "c0de26c0-f174-4365-9ea5-754e963a1974");
+    formData.append("userId", localStorage.getItem("uid"));
     formData.append("categories", selectedCategoryIds.join(","));
 
     if (image) {
