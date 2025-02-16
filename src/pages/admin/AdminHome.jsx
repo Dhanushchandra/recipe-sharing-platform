@@ -5,6 +5,7 @@ import NavBar from "../../components/noauth/NavBar";
 import RecipeCard from "../../components/noauth/RecipeCard";
 import AdminNavBar from "../../components/auth/AdminNavBar";
 import { useNavigate } from "react-router-dom";
+import AdminRecipeCard from "../../components/auth/AdminRecipeCard";
 
 const AdminHome = () => {
   const [recipes, setRecipes] = useState([]);
@@ -42,7 +43,7 @@ const AdminHome = () => {
       >
         {recipes.map((recipe) => (
           <div key={recipe.id}>
-            <RecipeCard recipe={recipe} />
+            <AdminRecipeCard recipe={recipe} />
           </div>
         ))}
       </div>

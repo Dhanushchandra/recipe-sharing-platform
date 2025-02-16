@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const RecipeCard = ({ recipe }) => {
+const AdminRecipeCard = ({ recipe }) => {
   return (
     <Card sx={{ maxWidth: 345, margin: 2 }}>
       <CardMedia
@@ -36,7 +36,7 @@ const RecipeCard = ({ recipe }) => {
         </Typography>
         <Button
           component={Link}
-          to={`/recipe/${recipe.id}`}
+          to={`/admin/recipe/${recipe.id}`}
           variant="contained"
           color="primary"
           sx={{ mt: 2 }}
@@ -48,4 +48,4 @@ const RecipeCard = ({ recipe }) => {
   );
 };
 
-export default RecipeCard;
+export default AdminRecipeCard;
