@@ -36,7 +36,7 @@ const RecipeCard = ({ recipe }) => {
         </Typography>
         <Button
           component={Link}
-          to={`/recipe/${recipe.id}`}
+          to={`/admin/recipe/${recipe.id}`}
           variant="contained"
           color="primary"
           sx={{ mt: 2 }}

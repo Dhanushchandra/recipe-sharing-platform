@@ -1,8 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/noauth/NavBar";
 import Home from "./pages";
 import RecipeDetailPage from "./pages/RecipeDetailPage";
+import Login from "./pages/admin/Login";
+import AdminHome from "./pages/admin/AdminHome";
+import RecipeDetailPageAdmin from "./pages/admin/RecipeDetailPageAdmin";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         }
       />
       <Route path="/recipe/:id" element={<RecipeDetailPage />} />
+      <Route path="/admin/login" element={<Login />} />
+      <Route path="/admin/home" element={<AdminHome />} />
+      <Route path="/admin/recipe/:id" element={<RecipeDetailPageAdmin />} />
     </Routes>
   );
 }

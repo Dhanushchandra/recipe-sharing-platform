@@ -11,7 +11,7 @@ import {
   Divider,
 } from "@mui/material";
 import axios from "axios";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/noauth/NavBar";
 
 const RecipeDetailPage = () => {
   const { id } = useParams();

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import RecipeCard from "../components/noauth/RecipeCard";
-import NavBar from "../components/noauth/NavBar";
 import { Pagination, Box } from "@mui/material";
+import NavBar from "../../components/noauth/NavBar";
+import RecipeCard from "../../components/noauth/RecipeCard";
+import AdminNavBar from "../../components/auth/AdminNavBar";
 
-const Home = () => {
+const AdminHome = () => {
   const [recipes, setRecipes] = useState([]);
-  const [page, setPage] = useState(0); // Current page (0-based index)
-  const [totalPages, setTotalPages] = useState(0); // Total number of pages
-  const [pageSize, setPageSize] = useState(1); // Number of items per page
-
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [pageSize, setPageSize] = useState(1);
   useEffect(() => {
     fetch(
       `http://localhost:8080/noauth/v1/recipes?page=${page}&size=${pageSize}`
@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <>
-      <NavBar />
+      <AdminNavBar />
 
       <div
         style={{
@@ -56,4 +56,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AdminHome;
